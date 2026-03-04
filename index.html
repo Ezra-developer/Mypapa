@@ -15,18 +15,16 @@ display:flex;
 justify-content:center;
 align-items:center;
 text-align:center;
-font-family:'Segoe UI',sans-serif;
+font-family:'Segoe UI';
 color:white;
 
-/* NIGHT SKY THEME */
+/* NIGHT SKY */
 
-background:
-radial-gradient(circle at 50% 20%,rgba(255,255,255,0.08),transparent 60%),
-linear-gradient(#1b1b3a,#070716);
+background:linear-gradient(#0b0b1f,#000010);
 overflow:hidden;
 }
 
-/* STARS */
+/* MANY STARS */
 
 body:before{
 content:"";
@@ -35,15 +33,22 @@ width:100%;
 height:100%;
 background:
 radial-gradient(2px 2px at 10% 20%,white,transparent),
+radial-gradient(2px 2px at 20% 30%,white,transparent),
 radial-gradient(2px 2px at 30% 40%,white,transparent),
-radial-gradient(2px 2px at 70% 30%,white,transparent),
-radial-gradient(2px 2px at 90% 60%,white,transparent),
-radial-gradient(2px 2px at 40% 80%,white,transparent),
-radial-gradient(2px 2px at 60% 50%,white,transparent);
-opacity:0.8;
+radial-gradient(2px 2px at 40% 50%,white,transparent),
+radial-gradient(2px 2px at 50% 60%,white,transparent),
+radial-gradient(2px 2px at 60% 30%,white,transparent),
+radial-gradient(2px 2px at 70% 20%,white,transparent),
+radial-gradient(2px 2px at 80% 50%,white,transparent),
+radial-gradient(2px 2px at 90% 70%,white,transparent),
+radial-gradient(2px 2px at 15% 75%,white,transparent),
+radial-gradient(2px 2px at 35% 85%,white,transparent),
+radial-gradient(2px 2px at 65% 80%,white,transparent),
+radial-gradient(2px 2px at 85% 40%,white,transparent);
+opacity:0.9;
 }
 
-/* CONTAINER */
+/* CONTENT */
 
 .container{
 position:relative;
@@ -53,9 +58,8 @@ z-index:1;
 /* TITLE */
 
 h1{
-font-size:70px;
+font-size:65px;
 text-shadow:0 0 25px white;
-margin-bottom:10px;
 }
 
 /* DOB */
@@ -63,15 +67,14 @@ margin-bottom:10px;
 .dob{
 font-size:22px;
 margin-bottom:20px;
-opacity:0.9;
 }
 
-/* AGE COUNTER */
+/* COUNTER */
 
-#age{
-font-size:26px;
-margin-top:20px;
-line-height:1.6;
+.counter{
+margin-top:30px;
+font-size:22px;
+line-height:1.8;
 }
 
 /* BUTTON */
@@ -107,11 +110,16 @@ transform:scale(1.1);
 23 / 03 / 2004 🎂
 </div>
 
-<div>
-Suji's Beautiful Journey 💫
-</div>
+<div class="counter">
 
-<div id="age"></div>
+<div id="years"></div>
+<div id="months"></div>
+<div id="days"></div>
+<div id="hours"></div>
+<div id="minutes"></div>
+<div id="seconds"></div>
+
+</div>
 
 <a class="btn" href="marry.html">
 See My Heart ❤️
@@ -121,37 +129,33 @@ See My Heart ❤️
 
 <script>
 
-/* AGE COUNTER FROM DOB */
+/* DOB */
 
-function updateAge(){
+let dob = new Date("2004-03-23")
 
-let dob = new Date(2004,2,23)
+function updateLife(){
 
 let now = new Date()
 
 let diff = now - dob
 
 let seconds = Math.floor(diff/1000)
-let minutes = Math.floor(seconds/60)
-let hours = Math.floor(minutes/60)
-let days = Math.floor(hours/24)
-let years = Math.floor(days/365)
+let minutes = Math.floor(diff/60000)
+let hours = Math.floor(diff/3600000)
+let days = Math.floor(diff/86400000)
+let months = Math.floor(days/30.44)
+let years = Math.floor(days/365.25)
 
-seconds = seconds % 60
-minutes = minutes % 60
-hours = hours % 24
-days = days % 365
-
-document.getElementById("age").innerHTML =
-years+" Years "+
-days+" Days "+
-hours+" Hours "+
-minutes+" Min "+
-seconds+" Sec"
+document.getElementById("years").innerHTML = years+" Years"
+document.getElementById("months").innerHTML = months+" Months"
+document.getElementById("days").innerHTML = days+" Days"
+document.getElementById("hours").innerHTML = hours.toLocaleString()+" Hours"
+document.getElementById("minutes").innerHTML = minutes.toLocaleString()+" Minutes"
+document.getElementById("seconds").innerHTML = seconds.toLocaleString()+" Seconds"
 
 }
 
-setInterval(updateAge,1000)
+setInterval(updateLife,1000)
 
 </script>
 
