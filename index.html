@@ -217,17 +217,15 @@ document.body.appendChild(star);
 
 /* LOVE MESSAGE */
 
-function showLove(){
+function openProposal(){
 
 document.getElementById("loveMessage").classList.add("showLove");
 
 setTimeout(()=>{
-
-document.getElementById("blessing").scrollIntoView({
-behavior:"smooth"
-});
-
+window.location.href="marry.html";
 },2500);
+
+}
 
 }
 
