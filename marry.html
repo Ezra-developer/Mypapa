@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Will You Marry Me? 💍</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Will You Marry Me</title>
 
 <style>
+
 body{
 margin:0;
 height:100vh;
@@ -13,23 +14,13 @@ justify-content:center;
 align-items:center;
 text-align:center;
 font-family:Segoe UI;
-background:radial-gradient(circle,#1e3c72,#0f2027);
 color:white;
-overflow:hidden;
-}
-
-.container{
-position:relative;
+background:url("bg.jpg") no-repeat center center/cover;
 }
 
 h1{
-font-size:60px;
-text-shadow:0 0 30px white;
-}
-
-p{
-font-size:24px;
-margin-top:10px;
+font-size:70px;
+text-shadow:0 0 25px white;
 }
 
 button{
@@ -37,42 +28,37 @@ padding:15px 40px;
 font-size:20px;
 border:none;
 border-radius:30px;
-background:white;
-color:#1e3c72;
+background:rgba(255,255,255,0.8);
+color:#333;
 cursor:pointer;
-box-shadow:0 0 20px white;
 margin:20px;
-}
-
-button:hover{
-transform:scale(1.1);
+box-shadow:0 0 20px white;
 }
 
 #noBtn{
 position:absolute;
 }
+
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div>
 
 <h1>Suji 💍</h1>
 
-<p>Will You Marry Me?</p>
+<h1>Will You Marry Me?</h1>
 
-<button onclick="yesClick()">Yes 💖</button>
+<button onclick="window.location.href='final.html'">
+Yes ❤️
+</button>
 
 <button id="noBtn" onmouseover="moveNo()">No 😅</button>
 
 </div>
 
 <script>
-
-function yesClick(){
-alert("You just made me the happiest man ❤️");
-}
 
 function moveNo(){
 
