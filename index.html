@@ -15,15 +15,19 @@ display:flex;
 justify-content:center;
 align-items:center;
 text-align:center;
-font-family:'Segoe UI';
+font-family:'Segoe UI',sans-serif;
 color:white;
-background:radial-gradient(circle at top,#1b1440,#000010);
+
+/* PINK GALAXY THEME */
+
+background:linear-gradient(160deg,#ff6a9f,#ffb3c6,#3a0ca3);
 overflow:hidden;
 }
 
 /* STARS */
 
-.stars{
+body:before{
+content:"";
 position:absolute;
 width:100%;
 height:100%;
@@ -34,24 +38,10 @@ radial-gradient(2px 2px at 60% 20%,white,transparent),
 radial-gradient(2px 2px at 80% 60%,white,transparent),
 radial-gradient(2px 2px at 30% 80%,white,transparent),
 radial-gradient(2px 2px at 70% 40%,white,transparent);
-animation:twinkle 3s infinite alternate;
+opacity:0.7;
 }
 
-@keyframes twinkle{
-from{opacity:0.4;}
-to{opacity:1;}
-}
-
-/* HEART ANIMATION */
-
-.heart{
-position:absolute;
-font-size:20px;
-opacity:0;
-transition:all 1.5s ease;
-}
-
-/* CONTENT */
+/* CONTAINER */
 
 .container{
 position:relative;
@@ -69,14 +59,14 @@ text-shadow:0 0 40px white;
 
 .dob{
 font-size:22px;
-margin-bottom:20px;
+margin-bottom:25px;
 }
 
 /* COUNTER */
 
 .counter{
 font-size:22px;
-line-height:1.7;
+line-height:1.8;
 }
 
 /* BUTTON */
@@ -86,12 +76,12 @@ display:inline-block;
 margin-top:40px;
 padding:18px 50px;
 border-radius:40px;
-background:white;
-color:#222;
+background:rgba(255,255,255,0.9);
+color:#333;
 font-size:20px;
 text-decoration:none;
-box-shadow:0 0 40px white;
-cursor:pointer;
+box-shadow:0 0 30px rgba(255,255,255,0.9);
+transition:0.3s;
 }
 
 .btn:hover{
@@ -103,8 +93,6 @@ transform:scale(1.1);
 </head>
 
 <body>
-
-<div class="stars"></div>
 
 <div class="container">
 
@@ -121,9 +109,9 @@ transform:scale(1.1);
 
 </div>
 
-<div class="btn" onclick="showHeart()">
+<a class="btn" href="marry.html">
 See My Heart ❤️
-</div>
+</a>
 
 </div>
 
@@ -155,45 +143,6 @@ days+" Days • "+hours.toLocaleString()+" Hours • "+minutes.toLocaleString()+
 }
 
 setInterval(updateLife,1000)
-
-
-/* HEART STAR ANIMATION */
-
-function showHeart(){
-
-let heartPositions=[
-[50,30],[45,35],[55,35],
-[40,45],[60,45],
-[45,55],[55,55],
-[50,65]
-]
-
-heartPositions.forEach(pos=>{
-
-let h=document.createElement("div")
-
-h.innerHTML="❤️"
-
-h.className="heart"
-
-h.style.left=pos[0]+"%"
-h.style.top=pos[1]+"%"
-
-document.body.appendChild(h)
-
-setTimeout(()=>{
-h.style.opacity=1
-},100)
-
-})
-
-/* GO TO NEXT PAGE */
-
-setTimeout(()=>{
-window.location.href="marry.html"
-},3000)
-
-}
 
 </script>
 
