@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>Happy Birthday Suji ❤️</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,117 +10,41 @@
 
 body{
 margin:0;
-font-family:Segoe UI;
-background:radial-gradient(circle at top,#1e3c72,#0f2027);
-color:white;
-text-align:center;
-overflow-x:hidden;
-}
-
-/* HERO SECTION */
-
-.hero{
 height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
+text-align:center;
+font-family:Segoe UI;
+background:linear-gradient(135deg,#1e3c72,#0f2027);
+color:white;
 }
 
 h1{
 font-size:60px;
 text-shadow:0 0 25px white;
-animation:glow 2s infinite alternate;
-}
-
-@keyframes glow{
-from{ text-shadow:0 0 10px white; }
-to{ text-shadow:0 0 35px white; }
 }
 
 p{
 font-size:22px;
 max-width:600px;
+margin-top:20px;
 }
 
-/* BUTTON */
-
-button{
-margin-top:30px;
-padding:12px 35px;
-font-size:18px;
-border:none;
+.button{
+margin-top:40px;
+padding:15px 40px;
+font-size:20px;
 border-radius:30px;
 background:white;
 color:#1e3c72;
-cursor:pointer;
+text-decoration:none;
 box-shadow:0 0 20px white;
 transition:0.3s;
 }
 
-button:hover{
-transform:scale(1.1);
-}
-
-/* STARS */
-
-.star{
-position:absolute;
-width:2px;
-height:2px;
-background:white;
-animation:twinkle 2s infinite alternate;
-}
-
-@keyframes twinkle{
-from{opacity:0.3;}
-to{opacity:1;}
-}
-
-/* LOVE MESSAGE */
-
-#loveMessage{
-position:fixed;
-top:40%;
-left:50%;
-transform:translate(-50%,-50%);
-font-size:70px;
-text-shadow:0 0 30px white,0 0 60px white;
-opacity:0;
-transition:2s;
-pointer-events:none;
-}
-
-.showLove{
-opacity:1;
-}
-
-/* SECTION */
-
-.section{
-padding:100px 20px;
-}
-
-/* GALLERY */
-
-.gallery{
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
-margin-top:40px;
-}
-
-.gallery img{
-width:250px;
-height:300px;
-object-fit:cover;
-border-radius:20px;
-box-shadow:0 0 20px rgba(255,255,255,0.6);
-transition:0.4s;
-}
-
-.gallery img:hover{
+.button:hover{
 transform:scale(1.1);
 }
 
@@ -129,12 +54,6 @@ transform:scale(1.1);
 
 <body>
 
-<div id="loveMessage">I Love You Suji ❤️</div>
-
-<!-- HERO -->
-
-<div class="hero">
-
 <h1>Happy Birthday Suji 🌙✨</h1>
 
 <p>
@@ -143,95 +62,10 @@ but my heart celebrates the blessing
 God placed in my life.
 </p>
 
-<a href="marry.html">
-<button>See My Heart 💖</button>
+<a class="button" href="marry.html">
+See My Heart 💖
 </a>
 
-</div>
-
-
-<!-- BLESSING SECTION -->
-
-<div id="blessing" class="section">
-
-<h2>You Are My Blessing ✝️</h2>
-
-<p>
-23rd March la God en life la biggest blessing ah anupinaru.  
-Ni vandhathuku apram dhaan en life ku direction kidaichathu.  
-I'm proud of you my CA Queen.
-</p>
-
-<p>
-“For I know the plans I have for you,” declares the Lord.  
-— Jeremiah 29:11
-</p>
-
-<button onclick="alert('Forever with you ❤️')">Forever With You ❤️</button>
-
-</div>
-
-
-<!-- MEMORIES -->
-
-<div class="section">
-
-<h2>Our Beautiful Memories 💞</h2>
-
-<div class="gallery">
-
-<img src="pic1.jpg">
-<img src="pic2.jpg">
-<img src="pic3.jpg">
-
-</div>
-
-</div>
-
-
-<!-- MUSIC -->
-
-<audio autoplay loop>
-<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_8c6f8d64c7.mp3" type="audio/mpeg">
-</audio>
-
-
-<script>
-
-/* STAR GENERATOR */
-
-for(let i=0;i<150;i++){
-
-let star=document.createElement("div");
-
-star.className="star";
-
-star.style.top=Math.random()*window.innerHeight+"px";
-
-star.style.left=Math.random()*window.innerWidth+"px";
-
-star.style.animationDuration=(Math.random()*3+1)+"s";
-
-document.body.appendChild(star);
-
-}
-
-
-/* LOVE MESSAGE */
-
-function openProposal(){
-
-document.getElementById("loveMessage").classList.add("showLove");
-
-setTimeout(()=>{
-window.location.href="marry.html";
-},2500);
-
-}
-
-}
-
-</script>
-
 </body>
+
 </html>
