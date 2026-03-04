@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>Happy Birthday Suji</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,41 +10,44 @@
 
 body{
 margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
 font-family:'Segoe UI',sans-serif;
 color:white;
-text-align:center;
 
 /* NIGHT SKY THEME */
 
-background:radial-gradient(circle at top,#2b2e4a,#0f2027);
-height:100vh;
-overflow-x:hidden;
+background:
+radial-gradient(circle at 50% 20%,rgba(255,255,255,0.08),transparent 60%),
+linear-gradient(#1b1b3a,#070716);
+overflow:hidden;
 }
 
-/* STAR EFFECT */
+/* STARS */
 
 body:before{
 content:"";
-position:fixed;
-top:0;
-left:0;
+position:absolute;
 width:100%;
 height:100%;
 background:
-radial-gradient(2px 2px at 20% 30%,white,transparent),
-radial-gradient(2px 2px at 40% 60%,white,transparent),
-radial-gradient(2px 2px at 70% 20%,white,transparent),
-radial-gradient(2px 2px at 90% 70%,white,transparent),
-radial-gradient(2px 2px at 60% 40%,white,transparent),
-radial-gradient(2px 2px at 10% 80%,white,transparent);
+radial-gradient(2px 2px at 10% 20%,white,transparent),
+radial-gradient(2px 2px at 30% 40%,white,transparent),
+radial-gradient(2px 2px at 70% 30%,white,transparent),
+radial-gradient(2px 2px at 90% 60%,white,transparent),
+radial-gradient(2px 2px at 40% 80%,white,transparent),
+radial-gradient(2px 2px at 60% 50%,white,transparent);
 opacity:0.8;
-pointer-events:none;
 }
 
 /* CONTAINER */
 
 .container{
-padding-top:120px;
+position:relative;
+z-index:1;
 }
 
 /* TITLE */
@@ -51,30 +55,37 @@ padding-top:120px;
 h1{
 font-size:70px;
 text-shadow:0 0 25px white;
-margin-bottom:20px;
+margin-bottom:10px;
 }
 
-/* TEXT */
+/* DOB */
 
-p{
-font-size:24px;
-max-width:700px;
-margin:auto;
+.dob{
+font-size:22px;
+margin-bottom:20px;
+opacity:0.9;
+}
+
+/* AGE COUNTER */
+
+#age{
+font-size:26px;
+margin-top:20px;
 line-height:1.6;
 }
 
-/* GLASS BUTTON */
+/* BUTTON */
 
 .btn{
 display:inline-block;
 margin-top:40px;
-padding:15px 45px;
+padding:16px 45px;
 border-radius:40px;
-background:rgba(255,255,255,0.8);
+background:rgba(255,255,255,0.85);
 color:#333;
 font-size:20px;
 text-decoration:none;
-box-shadow:0 0 20px rgba(255,255,255,0.8);
+box-shadow:0 0 25px white;
 transition:0.3s;
 }
 
@@ -82,32 +93,8 @@ transition:0.3s;
 transform:scale(1.1);
 }
 
-/* SECTION */
-
-.section{
-margin-top:120px;
-padding-bottom:100px;
-}
-
-/* GALLERY */
-
-.gallery{
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
-margin-top:40px;
-}
-
-.gallery img{
-width:260px;
-height:300px;
-border-radius:20px;
-object-fit:cover;
-box-shadow:0 0 20px rgba(255,255,255,0.6);
-}
-
 </style>
+
 </head>
 
 <body>
@@ -116,11 +103,15 @@ box-shadow:0 0 20px rgba(255,255,255,0.6);
 
 <h1>Happy Birthday Suji 🌙✨</h1>
 
-<p>
-Today the world celebrates you,
-but my heart celebrates the blessing
-God placed in my life.
-</p>
+<div class="dob">
+23 / 03 / 2004 🎂
+</div>
+
+<div>
+Suji's Beautiful Journey 💫
+</div>
+
+<div id="age"></div>
 
 <a class="btn" href="marry.html">
 See My Heart ❤️
@@ -128,40 +119,41 @@ See My Heart ❤️
 
 </div>
 
-<div class="section">
+<script>
 
-<h1>You Are My Blessing ✝</h1>
+/* AGE COUNTER FROM DOB */
 
-<p>
-23rd March la God en life la biggest blessing ah anupinaru.
-Ni vandhathuku apram dhaan en life ku direction kidaichathu.
-I'm proud of you my CA Queen.
-</p>
+function updateAge(){
 
-<p>
-“For I know the plans I have for you,” declares the Lord.
-— Jeremiah 29:11
-</p>
+let dob = new Date(2004,2,23)
 
-<a class="btn" href="marry.html">
-Forever With You ❤️
-</a>
+let now = new Date()
 
-</div>
+let diff = now - dob
 
-<div class="section">
+let seconds = Math.floor(diff/1000)
+let minutes = Math.floor(seconds/60)
+let hours = Math.floor(minutes/60)
+let days = Math.floor(hours/24)
+let years = Math.floor(days/365)
 
-<h1>Our Beautiful Memories 💞</h1>
+seconds = seconds % 60
+minutes = minutes % 60
+hours = hours % 24
+days = days % 365
 
-<div class="gallery">
+document.getElementById("age").innerHTML =
+years+" Years "+
+days+" Days "+
+hours+" Hours "+
+minutes+" Min "+
+seconds+" Sec"
 
-<img src="pic1.jpg">
-<img src="pic2.jpg">
-<img src="pic3.jpg">
+}
 
-</div>
+setInterval(updateAge,1000)
 
-</div>
+</script>
 
 </body>
 </html>
