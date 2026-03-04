@@ -2,149 +2,235 @@
 <html>
 <head>
 <title>Happy Birthday Suji ❤️</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: radial-gradient(circle at top, #1e3c72, #0f2027);
-    color: white;
-    text-align: center;
-    overflow-x: hidden;
+
+body{
+margin:0;
+font-family:Segoe UI;
+background:radial-gradient(circle at top,#1e3c72,#0f2027);
+color:white;
+text-align:center;
+overflow-x:hidden;
 }
 
-/* Hero Section */
-.hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/* HERO SECTION */
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 }
 
-h1 {
-    font-size: 50px;
-    text-shadow: 0 0 20px white;
+h1{
+font-size:60px;
+text-shadow:0 0 25px white;
+animation:glow 2s infinite alternate;
 }
 
-.countdown {
-    font-size: 28px;
-    margin-top: 20px;
+@keyframes glow{
+from{ text-shadow:0 0 10px white; }
+to{ text-shadow:0 0 35px white; }
 }
 
-button {
-    margin-top: 30px;
-    padding: 12px 30px;
-    font-size: 18px;
-    border-radius: 30px;
-    border: none;
-    background: white;
-    color: #1e3c72;
-    cursor: pointer;
-    box-shadow: 0 0 15px white;
-    transition: 0.3s;
+p{
+font-size:22px;
+max-width:600px;
 }
 
-button:hover {
-    transform: scale(1.1);
+/* BUTTON */
+
+button{
+margin-top:30px;
+padding:12px 35px;
+font-size:18px;
+border:none;
+border-radius:30px;
+background:white;
+color:#1e3c72;
+cursor:pointer;
+box-shadow:0 0 20px white;
+transition:0.3s;
 }
 
-/* Stars */
-.star {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: white;
-    animation: twinkle 2s infinite alternate;
+button:hover{
+transform:scale(1.1);
 }
 
-@keyframes twinkle {
-    from { opacity: 0.2; }
-    to { opacity: 1; }
+/* STARS */
+
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+animation:twinkle 2s infinite alternate;
 }
 
-/* Section */
-.section {
-    padding: 80px 20px;
+@keyframes twinkle{
+from{opacity:0.3;}
+to{opacity:1;}
 }
 
-.bible {
-    font-style: italic;
-    margin-top: 20px;
-    font-size: 20px;
+/* LOVE MESSAGE */
+
+#loveMessage{
+position:fixed;
+top:40%;
+left:50%;
+transform:translate(-50%,-50%);
+font-size:70px;
+text-shadow:0 0 30px white,0 0 60px white;
+opacity:0;
+transition:2s;
+pointer-events:none;
 }
+
+.showLove{
+opacity:1;
+}
+
+/* SECTION */
+
+.section{
+padding:100px 20px;
+}
+
+/* GALLERY */
+
+.gallery{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin-top:40px;
+}
+
+.gallery img{
+width:250px;
+height:300px;
+object-fit:cover;
+border-radius:20px;
+box-shadow:0 0 20px rgba(255,255,255,0.6);
+transition:0.4s;
+}
+
+.gallery img:hover{
+transform:scale(1.1);
+}
+
 </style>
+
 </head>
 
 <body>
 
+<div id="loveMessage">I Love You Suji ❤️</div>
+
+<!-- HERO -->
+
 <div class="hero">
-    <h1>Happy Birthday Suji 🌙✨</h1>
-    <div class="countdown" id="countdown"></div>
-    <button onclick="scrollDown()">Open My Heart 💖</button>
+
+<h1>Happy Birthday Suji 🌙✨</h1>
+
+<p>
+Today the world celebrates you,
+but my heart celebrates the blessing
+God placed in my life.
+</p>
+
+<button onclick="showLove()">See My Heart 💖</button>
+
 </div>
+
+
+<!-- BLESSING SECTION -->
+
+<div id="blessing" class="section">
+
+<h2>You Are My Blessing ✝️</h2>
+
+<p>
+23rd March la God en life la biggest blessing ah anupinaru.  
+Ni vandhathuku apram dhaan en life ku direction kidaichathu.  
+I'm proud of you my CA Queen.
+</p>
+
+<p>
+“For I know the plans I have for you,” declares the Lord.  
+— Jeremiah 29:11
+</p>
+
+<button onclick="alert('Forever with you ❤️')">Forever With You ❤️</button>
+
+</div>
+
+
+<!-- MEMORIES -->
 
 <div class="section">
-    <h2>You Are My Blessing ✝️</h2>
-    <p>
-        23rd March la God en life la biggest blessing ah anupinaru.
-        Ni vandhathuku apram dhaan en life ku direction kidaichathu.
-        I’m proud of you my CA Queen.
-    </p>
 
-    <div class="bible">
-        “For I know the plans I have for you,” declares the Lord. – Jeremiah 29:11
-    </div>
+<h2>Our Beautiful Memories 💞</h2>
 
-    <button onclick="showMessage()">Forever With You ❤️</button>
+<div class="gallery">
+
+<img src="pic1.jpg">
+<img src="pic2.jpg">
+<img src="pic3.jpg">
+
 </div>
 
+</div>
+
+
+<!-- MUSIC -->
+
 <audio autoplay loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_8c6f8d64c7.mp3?filename=soft-piano-ambient-110997.mp3" type="audio/mpeg">
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_8c6f8d64c7.mp3" type="audio/mpeg">
 </audio>
 
+
 <script>
-// Countdown
-var birthday = new Date("March 23, 2026 00:00:00").getTime();
 
-var x = setInterval(function() {
-    var now = new Date().getTime();
-    var distance = birthday - now;
+/* STAR GENERATOR */
 
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+for(let i=0;i<150;i++){
 
-    document.getElementById("countdown").innerHTML =
-    days + " Days " + hours + " Hours "
-    + minutes + " Minutes " + seconds + " Seconds ";
+let star=document.createElement("div");
 
-    if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("countdown").innerHTML = "It's Your Special Day 🎉";
-    }
-}, 1000);
+star.className="star";
 
-// Scroll
-function scrollDown() {
-    window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+star.style.top=Math.random()*window.innerHeight+"px";
+
+star.style.left=Math.random()*window.innerWidth+"px";
+
+star.style.animationDuration=(Math.random()*3+1)+"s";
+
+document.body.appendChild(star);
+
 }
 
-// Popup
-function showMessage() {
-    alert("With God guiding us, I want to walk every season of life with you ❤️");
+
+/* LOVE MESSAGE */
+
+function showLove(){
+
+document.getElementById("loveMessage").classList.add("showLove");
+
+setTimeout(()=>{
+
+document.getElementById("blessing").scrollIntoView({
+behavior:"smooth"
+});
+
+},2500);
+
 }
 
-// Stars
-for (let i = 0; i < 120; i++) {
-    let star = document.createElement("div");
-    star.className = "star";
-    star.style.top = Math.random() * window.innerHeight + "px";
-    star.style.left = Math.random() * window.innerWidth + "px";
-    star.style.animationDuration = (Math.random() * 3 + 1) + "s";
-    document.body.appendChild(star);
-}
 </script>
 
 </body>
