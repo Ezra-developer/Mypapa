@@ -17,49 +17,52 @@ align-items:center;
 text-align:center;
 font-family:'Segoe UI';
 color:white;
-
-/* NIGHT SKY */
-
-background:linear-gradient(#0b0b1f,#000010);
+background:radial-gradient(circle at top,#1b1440,#000010);
 overflow:hidden;
 }
 
-/* MANY STARS */
+/* STARS */
 
-body:before{
-content:"";
+.stars{
 position:absolute;
 width:100%;
 height:100%;
 background:
-radial-gradient(2px 2px at 10% 20%,white,transparent),
 radial-gradient(2px 2px at 20% 30%,white,transparent),
-radial-gradient(2px 2px at 30% 40%,white,transparent),
-radial-gradient(2px 2px at 40% 50%,white,transparent),
-radial-gradient(2px 2px at 50% 60%,white,transparent),
-radial-gradient(2px 2px at 60% 30%,white,transparent),
-radial-gradient(2px 2px at 70% 20%,white,transparent),
-radial-gradient(2px 2px at 80% 50%,white,transparent),
-radial-gradient(2px 2px at 90% 70%,white,transparent),
-radial-gradient(2px 2px at 15% 75%,white,transparent),
-radial-gradient(2px 2px at 35% 85%,white,transparent),
-radial-gradient(2px 2px at 65% 80%,white,transparent),
-radial-gradient(2px 2px at 85% 40%,white,transparent);
-opacity:0.9;
+radial-gradient(2px 2px at 40% 70%,white,transparent),
+radial-gradient(2px 2px at 60% 20%,white,transparent),
+radial-gradient(2px 2px at 80% 60%,white,transparent),
+radial-gradient(2px 2px at 30% 80%,white,transparent),
+radial-gradient(2px 2px at 70% 40%,white,transparent);
+animation:twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle{
+from{opacity:0.4;}
+to{opacity:1;}
+}
+
+/* HEART ANIMATION */
+
+.heart{
+position:absolute;
+font-size:20px;
+opacity:0;
+transition:all 1.5s ease;
 }
 
 /* CONTENT */
 
 .container{
 position:relative;
-z-index:1;
+z-index:10;
 }
 
 /* TITLE */
 
 h1{
-font-size:65px;
-text-shadow:0 0 25px white;
+font-size:70px;
+text-shadow:0 0 40px white;
 }
 
 /* DOB */
@@ -72,9 +75,8 @@ margin-bottom:20px;
 /* COUNTER */
 
 .counter{
-margin-top:30px;
 font-size:22px;
-line-height:1.8;
+line-height:1.7;
 }
 
 /* BUTTON */
@@ -82,14 +84,14 @@ line-height:1.8;
 .btn{
 display:inline-block;
 margin-top:40px;
-padding:16px 45px;
+padding:18px 50px;
 border-radius:40px;
-background:rgba(255,255,255,0.85);
-color:#333;
+background:white;
+color:#222;
 font-size:20px;
 text-decoration:none;
-box-shadow:0 0 25px white;
-transition:0.3s;
+box-shadow:0 0 40px white;
+cursor:pointer;
 }
 
 .btn:hover{
@@ -102,6 +104,8 @@ transform:scale(1.1);
 
 <body>
 
+<div class="stars"></div>
+
 <div class="container">
 
 <h1>Happy Birthday Suji 🌙✨</h1>
@@ -112,24 +116,20 @@ transform:scale(1.1);
 
 <div class="counter">
 
-<div id="years"></div>
-<div id="months"></div>
-<div id="days"></div>
-<div id="hours"></div>
-<div id="minutes"></div>
-<div id="seconds"></div>
+<div id="line1"></div>
+<div id="line2"></div>
 
 </div>
 
-<a class="btn" href="marry.html">
+<div class="btn" onclick="showHeart()">
 See My Heart ❤️
-</a>
+</div>
 
 </div>
 
 <script>
 
-/* DOB */
+/* LIFE COUNTER */
 
 let dob = new Date("2004-03-23")
 
@@ -146,16 +146,54 @@ let days = Math.floor(diff/86400000)
 let months = Math.floor(days/30.44)
 let years = Math.floor(days/365.25)
 
-document.getElementById("years").innerHTML = years+" Years"
-document.getElementById("months").innerHTML = months+" Months"
-document.getElementById("days").innerHTML = days+" Days"
-document.getElementById("hours").innerHTML = hours.toLocaleString()+" Hours"
-document.getElementById("minutes").innerHTML = minutes.toLocaleString()+" Minutes"
-document.getElementById("seconds").innerHTML = seconds.toLocaleString()+" Seconds"
+document.getElementById("line1").innerHTML =
+years+" Years • "+months+" Months"
+
+document.getElementById("line2").innerHTML =
+days+" Days • "+hours.toLocaleString()+" Hours • "+minutes.toLocaleString()+" Minutes • "+seconds.toLocaleString()+" Seconds"
 
 }
 
 setInterval(updateLife,1000)
+
+
+/* HEART STAR ANIMATION */
+
+function showHeart(){
+
+let heartPositions=[
+[50,30],[45,35],[55,35],
+[40,45],[60,45],
+[45,55],[55,55],
+[50,65]
+]
+
+heartPositions.forEach(pos=>{
+
+let h=document.createElement("div")
+
+h.innerHTML="❤️"
+
+h.className="heart"
+
+h.style.left=pos[0]+"%"
+h.style.top=pos[1]+"%"
+
+document.body.appendChild(h)
+
+setTimeout(()=>{
+h.style.opacity=1
+},100)
+
+})
+
+/* GO TO NEXT PAGE */
+
+setTimeout(()=>{
+window.location.href="marry.html"
+},3000)
+
+}
 
 </script>
 
