@@ -37,7 +37,7 @@ radial-gradient(2px 2px at 30% 80%,white,transparent);
 opacity:0.7;
 }
 
-/* FLOATING IMAGES */
+/* FLOAT IMAGES */
 
 .floating-img{
 position:absolute;
@@ -46,7 +46,6 @@ height:160px;
 object-fit:cover;
 border-radius:15px;
 opacity:0.5;
-filter:blur(0.5px);
 box-shadow:0 0 25px rgba(255,255,255,0.6);
 animation:float 8s infinite ease-in-out;
 }
@@ -67,14 +66,15 @@ animation:float 8s infinite ease-in-out;
 .container{
 position:relative;
 z-index:10;
+max-width:700px;
 }
 
 /* TITLE */
 
 h1{
-font-size:70px;
+font-size:60px;
 text-shadow:0 0 40px white;
-margin-bottom:20px;
+margin-bottom:10px;
 animation:glow 2s infinite alternate;
 }
 
@@ -83,9 +83,13 @@ from{ text-shadow:0 0 20px white;}
 to{ text-shadow:0 0 60px #fff;}
 }
 
+/* TEXT */
+
 p{
-font-size:26px;
+font-size:22px;
 margin-bottom:40px;
+line-height:1.6;
+opacity:0.95;
 }
 
 /* BUTTONS */
@@ -101,14 +105,21 @@ box-shadow:0 0 25px rgba(255,255,255,0.8);
 transition:0.3s;
 }
 
-/* YES */
+/* YES BUTTON */
 
 .yes{
 background:white;
 color:#333;
+animation:pulse 1.5s infinite;
 }
 
-/* NO */
+@keyframes pulse{
+0%{transform:scale(1)}
+50%{transform:scale(1.1)}
+100%{transform:scale(1)}
+}
+
+/* NO BUTTON */
 
 .no{
 background:#ff4d6d;
@@ -120,13 +131,27 @@ button:hover{
 transform:scale(1.1);
 }
 
+/* HEART FLOAT */
+
+.heart{
+position:fixed;
+top:-10px;
+font-size:20px;
+animation:fall 6s linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-10px); opacity:1;}
+100%{transform:translateY(110vh); opacity:0;}
+}
+
 </style>
 
 </head>
 
 <body>
 
-<!-- FLOATING IMAGES -->
+<!-- IMAGES -->
 
 <img src="pic1.jpg" class="floating-img img1">
 <img src="pic4.jpg" class="floating-img img2">
@@ -135,9 +160,15 @@ transform:scale(1.1);
 
 <div class="container">
 
-<h1>Suji 💍</h1>
+<h1>Will You Marry Me 💍</h1>
 
-<p>Will You Marry Me?</p>
+<p>
+From the moment you came into my life,<br>
+everything became beautiful 💖<br><br>
+
+I don't want just today…<br>
+I want forever with you ❤️
+</p>
 
 <button class="yes" onclick="goNext()">
 Yes ❤️
@@ -151,24 +182,37 @@ No 😅
 
 <script>
 
-/* YES BUTTON */
+/* YES */
 
 function goNext(){
 window.location.href="final.html"
 }
 
-/* NO BUTTON RUN AWAY */
+/* NO RUN */
 
 function moveNo(){
-
 let btn=document.getElementById("noBtn")
-
 let x=Math.floor(Math.random()*300)-150
 let y=Math.floor(Math.random()*300)-150
-
 btn.style.transform="translate("+x+"px,"+y+"px)"
-
 }
+
+/* HEART RAIN */
+
+function createHeart(){
+let heart=document.createElement("div")
+heart.className="heart"
+heart.innerHTML="💖"
+heart.style.left=Math.random()*100+"vw"
+heart.style.animationDuration=(4+Math.random()*2)+"s"
+document.body.appendChild(heart)
+
+setTimeout(()=>{
+heart.remove()
+},6000)
+}
+
+setInterval(createHeart,400)
 
 </script>
 
