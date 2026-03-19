@@ -37,7 +37,7 @@ radial-gradient(2px 2px at 30% 80%,white,transparent);
 opacity:0.7;
 }
 
-/* FLOAT IMAGES */
+/* FLOATING IMAGES */
 
 .floating-img{
 position:absolute;
@@ -83,13 +83,10 @@ from{ text-shadow:0 0 20px white;}
 to{ text-shadow:0 0 60px #fff;}
 }
 
-/* TEXT */
-
 p{
 font-size:22px;
 margin-bottom:40px;
 line-height:1.6;
-opacity:0.95;
 }
 
 /* BUTTONS */
@@ -102,7 +99,7 @@ font-size:20px;
 cursor:pointer;
 margin:10px;
 box-shadow:0 0 25px rgba(255,255,255,0.8);
-transition:0.3s;
+transition:0.2s;
 }
 
 /* YES BUTTON */
@@ -110,7 +107,7 @@ transition:0.3s;
 .yes{
 background:white;
 color:#333;
-animation:pulse 1.5s infinite;
+animation:pulse 1.2s infinite;
 }
 
 @keyframes pulse{
@@ -124,14 +121,10 @@ animation:pulse 1.5s infinite;
 .no{
 background:#ff4d6d;
 color:white;
-position:absolute;
+position:fixed;
 }
 
-button:hover{
-transform:scale(1.1);
-}
-
-/* HEART FLOAT */
+/* HEART FALL */
 
 .heart{
 position:fixed;
@@ -165,18 +158,13 @@ animation:fall 6s linear infinite;
 <p>
 From the moment you came into my life,<br>
 everything became beautiful 💖<br><br>
-
 I don't want just today…<br>
 I want forever with you ❤️
 </p>
 
-<button class="yes" onclick="goNext()">
-Yes ❤️
-</button>
+<button class="yes" onclick="goNext()">Yes ❤️</button>
 
-<button class="no" id="noBtn" onmouseover="moveNo()">
-No 😅
-</button>
+<button class="no" id="noBtn">No 😅</button>
 
 </div>
 
@@ -188,28 +176,49 @@ function goNext(){
 window.location.href="final.html"
 }
 
-/* NO RUN */
+/* ULTRA FAST NO BUTTON */
 
-function moveNo(){
-let btn=document.getElementById("noBtn")
-let x=Math.floor(Math.random()*300)-150
-let y=Math.floor(Math.random()*300)-150
-btn.style.transform="translate("+x+"px,"+y+"px)"
+let btn = document.getElementById("noBtn")
+
+document.addEventListener("mousemove", function(e){
+
+let rect = btn.getBoundingClientRect()
+
+let distance = Math.hypot(
+e.clientX - (rect.left + rect.width/2),
+e.clientY - (rect.top + rect.height/2)
+)
+
+if(distance < 120){
+
+let x = Math.random() * (window.innerWidth - 100)
+let y = Math.random() * (window.innerHeight - 100)
+
+btn.style.left = x + "px"
+btn.style.top = y + "px"
+
 }
+
+})
 
 /* HEART RAIN */
 
 function createHeart(){
+
 let heart=document.createElement("div")
+
 heart.className="heart"
 heart.innerHTML="💖"
+
 heart.style.left=Math.random()*100+"vw"
 heart.style.animationDuration=(4+Math.random()*2)+"s"
+
 document.body.appendChild(heart)
 
 setTimeout(()=>{
 heart.remove()
 },6000)
+
 }
 
 setInterval(createHeart,400)
