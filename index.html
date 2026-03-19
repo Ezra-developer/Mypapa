@@ -17,9 +17,6 @@ align-items:center;
 text-align:center;
 font-family:'Segoe UI',sans-serif;
 color:white;
-
-/* PINK GALAXY THEME */
-
 background:linear-gradient(160deg,#ff6a9f,#ffb3c6,#3a0ca3);
 overflow:hidden;
 }
@@ -40,6 +37,31 @@ radial-gradient(2px 2px at 30% 80%,white,transparent),
 radial-gradient(2px 2px at 70% 40%,white,transparent);
 opacity:0.7;
 }
+
+/* FLOATING IMAGES */
+
+.floating-img{
+position:absolute;
+width:120px;
+height:150px;
+object-fit:cover;
+border-radius:15px;
+opacity:0.5;
+animation:float 10s infinite ease-in-out;
+}
+
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-30px)}
+100%{transform:translateY(0)}
+}
+
+/* POSITIONS */
+
+.img1{top:10%; left:10%;}
+.img2{top:70%; left:15%;}
+.img3{top:20%; right:10%;}
+.img4{bottom:10%; right:15%;}
 
 /* CONTAINER */
 
@@ -94,6 +116,13 @@ transform:scale(1.1);
 
 <body>
 
+<!-- FLOATING IMAGES -->
+
+<img src="pic7.jpg" class="floating-img img1">
+<img src="pic6.jpg" class="floating-img img2">
+<img src="pic5.jpg" class="floating-img img3">
+<img src="pic2.jpg" class="floating-img img4">
+
 <div class="container">
 
 <h1>Happy Birthday Suji 🌙✨</h1>
@@ -103,10 +132,8 @@ transform:scale(1.1);
 </div>
 
 <div class="counter">
-
 <div id="line1"></div>
 <div id="line2"></div>
-
 </div>
 
 <a class="btn" href="marry.html">
@@ -116,8 +143,6 @@ See My Heart ❤️
 </div>
 
 <script>
-
-/* LIFE COUNTER */
 
 let dob = new Date("2004-03-23")
 
