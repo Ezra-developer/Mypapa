@@ -56,8 +56,6 @@ animation:float 10s infinite ease-in-out;
 100%{transform:translateY(0)}
 }
 
-/* POSITIONS */
-
 .img1{top:10%; left:10%;}
 .img2{top:70%; left:15%;}
 .img3{top:20%; right:10%;}
@@ -70,18 +68,25 @@ position:relative;
 z-index:10;
 }
 
-/* TITLE */
+/* TITLE + HEART BEAT */
 
 h1{
 font-size:70px;
 text-shadow:0 0 40px white;
+animation:beat 1.5s infinite;
 }
 
-/* DOB */
+@keyframes beat{
+0%,100%{transform:scale(1)}
+50%{transform:scale(1.05)}
+}
+
+/* MESSAGE */
 
 .dob{
-font-size:22px;
-margin-bottom:25px;
+font-size:20px;
+margin:20px 0;
+min-height:120px;
 }
 
 /* COUNTER */
@@ -127,9 +132,9 @@ transform:scale(1.1);
 
 <h1>Happy Birthday Suji 🌙✨</h1>
 
-<div class="dob">
-23 / 03 / 2004 🎂
-</div>
+<!-- TYPING MESSAGE -->
+
+<div class="dob" id="typing"></div>
 
 <div class="counter">
 <div id="line1"></div>
@@ -143,6 +148,24 @@ See My Heart ❤️
 </div>
 
 <script>
+
+/* TYPING EFFECT */
+
+let text = "Happy bday papa 💖\netha website na thara etha bday gift 🎁\netha image la eruka mari epavum happy aa iru papa 😊\nena problem vandhalum I'm always with you papa ❤️"
+
+let i=0
+
+function typing(){
+if(i<text.length){
+document.getElementById("typing").innerHTML += text.charAt(i)
+i++
+setTimeout(typing,40)
+}
+}
+
+typing()
+
+/* LIFE COUNTER */
 
 let dob = new Date("2004-03-23")
 
@@ -160,10 +183,12 @@ let months = Math.floor(days/30.44)
 let years = Math.floor(days/365.25)
 
 document.getElementById("line1").innerHTML =
-years+" Years • "+months+" Months"
+years+" Years • "+months+" Months • "+days+" Days"
 
 document.getElementById("line2").innerHTML =
-days+" Days • "+hours.toLocaleString()+" Hours • "+minutes.toLocaleString()+" Minutes • "+seconds.toLocaleString()+" Seconds"
+hours.toLocaleString()+" Hours • "+
+minutes.toLocaleString()+" Minutes • "+
+seconds.toLocaleString()+" Seconds"
 
 }
 
