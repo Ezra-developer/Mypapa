@@ -17,9 +17,6 @@ align-items:center;
 text-align:center;
 font-family:'Segoe UI',sans-serif;
 color:white;
-
-/* PINK ROMANTIC BACKGROUND */
-
 background:linear-gradient(160deg,#ff6a9f,#ffb3c6,#3a0ca3);
 overflow:hidden;
 }
@@ -40,6 +37,33 @@ radial-gradient(2px 2px at 30% 80%,white,transparent);
 opacity:0.7;
 }
 
+/* FLOATING IMAGES */
+
+.floating-img{
+position:absolute;
+width:130px;
+height:160px;
+object-fit:cover;
+border-radius:15px;
+opacity:0.5;
+filter:blur(0.5px);
+box-shadow:0 0 25px rgba(255,255,255,0.6);
+animation:float 8s infinite ease-in-out;
+}
+
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-25px)}
+100%{transform:translateY(0)}
+}
+
+.img1{top:8%; left:8%;}
+.img2{bottom:10%; left:12%;}
+.img3{top:8%; right:8%;}
+.img4{bottom:10%; right:12%;}
+
+/* MAIN */
+
 .container{
 position:relative;
 z-index:10;
@@ -51,6 +75,12 @@ h1{
 font-size:70px;
 text-shadow:0 0 40px white;
 margin-bottom:20px;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{ text-shadow:0 0 20px white;}
+to{ text-shadow:0 0 60px #fff;}
 }
 
 p{
@@ -68,16 +98,17 @@ font-size:20px;
 cursor:pointer;
 margin:10px;
 box-shadow:0 0 25px rgba(255,255,255,0.8);
+transition:0.3s;
 }
 
-/* YES BUTTON */
+/* YES */
 
 .yes{
 background:white;
 color:#333;
 }
 
-/* NO BUTTON */
+/* NO */
 
 .no{
 background:#ff4d6d;
@@ -94,6 +125,13 @@ transform:scale(1.1);
 </head>
 
 <body>
+
+<!-- FLOATING IMAGES -->
+
+<img src="pic1.jpg" class="floating-img img1">
+<img src="pic4.jpg" class="floating-img img2">
+<img src="pic8.jpg" class="floating-img img3">
+<img src="pic9.jpg" class="floating-img img4">
 
 <div class="container">
 
