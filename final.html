@@ -61,6 +61,7 @@ height:350px;
 object-fit:cover;
 border-radius:20px;
 box-shadow:0 0 25px rgba(255,255,255,0.8);
+transition:0.5s;
 }
 
 /* FALLING HEARTS */
@@ -101,9 +102,7 @@ Every moment with you is a beautiful gift.
 </p>
 
 <div class="slideshow">
-
 <img id="slide" src="pic1.jpg">
-
 </div>
 
 <!-- MUSIC -->
@@ -119,7 +118,11 @@ Every moment with you is a beautiful gift.
 let images=[
 "pic1.jpg",
 "pic2.jpg",
-"pic3.jpg"
+"pic3.jpg",
+"pic4.jpg",
+"pic5.jpg",
+"pic6.jpg",
+"pic7.jpg"
 ]
 
 let i=0
@@ -132,7 +135,14 @@ if(i>=images.length){
 i=0
 }
 
-document.getElementById("slide").src=images[i]
+let img=document.getElementById("slide")
+
+img.style.opacity=0
+
+setTimeout(()=>{
+img.src=images[i]
+img.style.opacity=1
+},300)
 
 }
 
