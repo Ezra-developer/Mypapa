@@ -38,7 +38,7 @@ radial-gradient(2px 2px at 70% 40%,white,transparent);
 opacity:0.7;
 }
 
-/* FLOATING IMAGES */
+/* FLOAT IMAGES */
 
 .floating-img{
 position:absolute;
@@ -46,54 +46,61 @@ width:120px;
 height:150px;
 object-fit:cover;
 border-radius:15px;
-opacity:0.5;
-animation:float 10s infinite ease-in-out;
+opacity:0.6;
+filter:blur(0.5px);
+box-shadow:0 0 20px rgba(255,255,255,0.6);
+animation:float 8s infinite ease-in-out;
 }
 
 @keyframes float{
 0%{transform:translateY(0)}
-50%{transform:translateY(-30px)}
+50%{transform:translateY(-25px)}
 100%{transform:translateY(0)}
 }
 
-.img1{top:10%; left:10%;}
-.img2{top:70%; left:15%;}
-.img3{top:20%; right:10%;}
-.img4{bottom:10%; right:15%;}
+.img1{top:10%; left:8%;}
+.img2{bottom:10%; left:12%;}
+.img3{top:10%; right:8%;}
+.img4{bottom:10%; right:12%;}
 
-/* CONTAINER */
+/* MAIN */
 
 .container{
 position:relative;
 z-index:10;
+max-width:900px;
+padding:20px;
 }
 
-/* TITLE + HEART BEAT */
+/* TITLE */
 
 h1{
-font-size:70px;
-text-shadow:0 0 40px white;
-animation:beat 1.5s infinite;
-}
-
-@keyframes beat{
-0%,100%{transform:scale(1)}
-50%{transform:scale(1.05)}
+font-size:65px;
+text-shadow:0 0 35px white;
+margin-bottom:20px;
 }
 
 /* MESSAGE */
 
-.dob{
+.message{
 font-size:20px;
-margin:20px 0;
-min-height:120px;
+line-height:1.6;
+margin-bottom:30px;
+color:#fff;
+opacity:0.95;
 }
 
 /* COUNTER */
 
 .counter{
-font-size:22px;
-line-height:1.8;
+font-size:20px;
+line-height:2;
+background:rgba(255,255,255,0.1);
+padding:15px 20px;
+border-radius:15px;
+display:inline-block;
+backdrop-filter:blur(10px);
+box-shadow:0 0 20px rgba(255,255,255,0.2);
 }
 
 /* BUTTON */
@@ -103,7 +110,7 @@ display:inline-block;
 margin-top:40px;
 padding:18px 50px;
 border-radius:40px;
-background:rgba(255,255,255,0.9);
+background:rgba(255,255,255,0.95);
 color:#333;
 font-size:20px;
 text-decoration:none;
@@ -113,6 +120,15 @@ transition:0.3s;
 
 .btn:hover{
 transform:scale(1.1);
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+h1{font-size:40px;}
+.message{font-size:16px;}
+.counter{font-size:16px;}
+.floating-img{width:80px;height:100px;}
 }
 
 </style>
@@ -132,14 +148,19 @@ transform:scale(1.1);
 
 <h1>Happy Birthday Suji 🌙✨</h1>
 
-<!-- TYPING MESSAGE -->
-
-<div class="dob" id="typing"></div>
+<div class="message">
+Happy bday papa 💖  
+etha website na thara etha bday gift 🎁  
+etha image la eruka mari epavum happy aa iru papa 😊  
+ena problem vandhalum I'm always with you papa ❤️
+</div>
 
 <div class="counter">
 <div id="line1"></div>
 <div id="line2"></div>
 </div>
+
+<br>
 
 <a class="btn" href="marry.html">
 See My Heart ❤️
@@ -148,22 +169,6 @@ See My Heart ❤️
 </div>
 
 <script>
-
-/* TYPING EFFECT */
-
-let text = "Happy bday papa 💖\netha website na thara etha bday gift 🎁\netha image la eruka mari epavum happy aa iru papa 😊\nena problem vandhalum I'm always with you papa ❤️"
-
-let i=0
-
-function typing(){
-if(i<text.length){
-document.getElementById("typing").innerHTML += text.charAt(i)
-i++
-setTimeout(typing,40)
-}
-}
-
-typing()
 
 /* LIFE COUNTER */
 
