@@ -19,22 +19,6 @@ overflow:hidden;
 padding-top:80px;
 }
 
-/* STARS */
-
-body:before{
-content:"";
-position:absolute;
-width:100%;
-height:100%;
-background:
-radial-gradient(2px 2px at 20% 30%,white,transparent),
-radial-gradient(2px 2px at 40% 70%,white,transparent),
-radial-gradient(2px 2px at 60% 20%,white,transparent),
-radial-gradient(2px 2px at 80% 60%,white,transparent),
-radial-gradient(2px 2px at 30% 80%,white,transparent);
-opacity:0.6;
-}
-
 /* TITLE */
 
 h1{
@@ -50,10 +34,6 @@ margin-top:20px;
 }
 
 /* IMAGE */
-
-.slideshow{
-margin-top:40px;
-}
 
 .slideshow img{
 width:300px;
@@ -98,10 +78,23 @@ text-align:center;
 box-shadow:0 0 30px rgba(0,0,0,0.5);
 transition:0.4s;
 z-index:1000;
+width:300px;
 }
 
 .popup.active{
 transform:translate(-50%,-50%) scale(1);
+}
+
+/* CLOSE BUTTON */
+
+.close-btn{
+margin-top:15px;
+background:#ff4d6d;
+color:white;
+padding:10px 20px;
+border:none;
+border-radius:20px;
+cursor:pointer;
 }
 
 /* HEARTS */
@@ -116,22 +109,6 @@ animation:fall 6s linear infinite;
 @keyframes fall{
 0%{transform:translateY(-10px);opacity:1;}
 100%{transform:translateY(110vh);opacity:0;}
-}
-
-/* FIREWORK */
-
-.firework{
-position:fixed;
-width:5px;
-height:5px;
-background:white;
-border-radius:50%;
-animation:explode 1s ease-out forwards;
-}
-
-@keyframes explode{
-0%{transform:scale(1);opacity:1;}
-100%{transform:scale(8);opacity:0;}
 }
 
 </style>
@@ -159,21 +136,37 @@ Every moment with you is a beautiful gift.
 <div class="popup" id="popup">
 <h2>I Love You Forever ❤️</h2>
 <p>You are my everything Suji 💖</p>
-</div>
 
-<!-- MUSIC -->
+<!-- VOICE -->
 
-<audio autoplay loop>
-<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_8c6f8d64c7.mp3">
+<audio id="voice">
+<source src="voice.mp3">
 </audio>
+
+<button class="close-btn" onclick="closePopup()">Close</button>
+
+</div>
 
 <script>
 
-/* POPUP */
+/* OPEN POPUP */
 
 function openSurprise(){
 document.getElementById("popup").classList.add("active")
-startFireworks()
+
+// play voice
+document.getElementById("voice").play()
+}
+
+/* CLOSE POPUP */
+
+function closePopup(){
+document.getElementById("popup").classList.remove("active")
+
+// stop voice
+let v=document.getElementById("voice")
+v.pause()
+v.currentTime=0
 }
 
 /* HEARTS */
@@ -187,20 +180,8 @@ heart.style.animationDuration=(4+Math.random()*2)+"s"
 document.body.appendChild(heart)
 setTimeout(()=>heart.remove(),6000)
 }
+
 setInterval(createHeart,400)
-
-/* FIREWORKS */
-
-function startFireworks(){
-setInterval(()=>{
-let fire=document.createElement("div")
-fire.className="firework"
-fire.style.left=Math.random()*100+"vw"
-fire.style.top=Math.random()*100+"vh"
-document.body.appendChild(fire)
-setTimeout(()=>fire.remove(),1000)
-},200)
-}
 
 </script>
 
