@@ -47,7 +47,6 @@ height:150px;
 object-fit:cover;
 border-radius:15px;
 opacity:0.6;
-filter:blur(0.5px);
 box-shadow:0 0 20px rgba(255,255,255,0.6);
 animation:float 8s infinite ease-in-out;
 }
@@ -72,22 +71,34 @@ max-width:900px;
 padding:20px;
 }
 
-/* TITLE */
+/* TITLE GLOW */
 
 h1{
 font-size:65px;
-text-shadow:0 0 35px white;
+text-shadow:0 0 30px white;
 margin-bottom:20px;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{ text-shadow:0 0 20px white;}
+to{ text-shadow:0 0 60px #fff;}
 }
 
 /* MESSAGE */
 
 .message{
 font-size:20px;
-line-height:1.6;
+line-height:1.8;
+max-width:700px;
+margin:auto;
 margin-bottom:30px;
-color:#fff;
-opacity:0.95;
+animation:fadeIn 2s ease;
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
 }
 
 /* COUNTER */
@@ -146,12 +157,12 @@ h1{font-size:40px;}
 
 <div class="container">
 
-<h1>Happy Birthday My dear Papa 🌙✨</h1>
+<h1>Happy Birthday My Dear Papa 🌙✨</h1>
 
 <div class="message">
-Happy bday papa 💖  <br>
-etha website na thara etha bday gift 🎁   <br> 
-etha image la eruka mari epavum happy aa iru papa 😊    <br>
+Happy bday papa 💖 <br>
+etha website na thara etha bday gift 🎁 <br>
+etha image la eruka mari epavum happy aa iru papa 😊 <br>
 ena problem vandhalum I'm always with you papa ❤️
 </div>
 
@@ -170,7 +181,7 @@ See My Heart ❤️
 
 <script>
 
-/* LIFE COUNTER */
+/* EXACT AGE CALCULATION */
 
 let dob = new Date("2004-03-19")
 
@@ -178,17 +189,30 @@ function updateLife(){
 
 let now = new Date()
 
+let years = now.getFullYear() - dob.getFullYear()
+let months = now.getMonth() - dob.getMonth()
+let days = now.getDate() - dob.getDate()
+
+if(days < 0){
+months--
+}
+
+if(months < 0){
+years--
+months += 12
+}
+
+/* TIME */
+
 let diff = now - dob
 
 let seconds = Math.floor(diff/1000)
 let minutes = Math.floor(diff/60000)
 let hours = Math.floor(diff/3600000)
-let days = Math.floor(diff/86400000)
-let months = Math.floor(days/30.44)
-let years = Math.floor(days/365.25)
+let totalDays = Math.floor(diff/86400000)
 
 document.getElementById("line1").innerHTML =
-years+" Years • "+months+" Months • "+days+" Days"
+years+" Years • "+months+" Months • "+totalDays+" Days"
 
 document.getElementById("line2").innerHTML =
 hours.toLocaleString()+" Hours • "+
