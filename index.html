@@ -71,7 +71,7 @@ max-width:900px;
 padding:20px;
 }
 
-/* TITLE GLOW */
+/* TITLE */
 
 h1{
 font-size:65px;
@@ -112,6 +112,12 @@ border-radius:15px;
 display:inline-block;
 backdrop-filter:blur(10px);
 box-shadow:0 0 20px rgba(255,255,255,0.2);
+animation:glowBox 2s infinite alternate;
+}
+
+@keyframes glowBox{
+from{ box-shadow:0 0 10px rgba(255,255,255,0.2);}
+to{ box-shadow:0 0 30px rgba(255,255,255,0.6);}
 }
 
 /* BUTTON */
@@ -161,7 +167,7 @@ h1{font-size:40px;}
 
 <div class="message">
 Happy bday papa 💖 <br>
-etha website na thara etha bday gift 🎁 <br>
+etha website na thara etha bday gift 🎁 <br> 
 etha image la eruka mari epavum happy aa iru papa 😊 <br>
 ena problem vandhalum I'm always with you papa ❤️
 </div>
@@ -179,45 +185,106 @@ See My Heart ❤️
 
 </div>
 
+<!-- AUDIO -->
+
+<audio id="bgMusic" loop>
+<source src="voice.mp3" type="audio/mpeg">
+</audio>
+
 <script>
 
-/* EXACT AGE CALCULATION */
+/* AUTO PLAY FIX */
+
+document.addEventListener("click", function(){
+document.getElementById("bgMusic").play()
+}, { once:true })
+
+/* ANIMATION COUNTER */
 
 let dob = new Date("2004-03-23")
 
+let prev = {years:0,months:0,days:0,hours:0,minutes:0,seconds:0}
+
+function animateValue(start,end,duration,callback){
+let startTime=null
+
+function anim(t){
+if(!startTime) startTime=t
+let progress=t-startTime
+let value=Math.floor(start+(end-start)*(progress/duration))
+callback(value)
+if(progress<duration){
+requestAnimationFrame(anim)
+}else{
+callback(end)
+}
+}
+requestAnimationFrame(anim)
+}
+
 function updateLife(){
 
-let now = new Date()
+let now=new Date()
 
-let years = now.getFullYear() - dob.getFullYear()
-let months = now.getMonth() - dob.getMonth()
-let days = now.getDate() - dob.getDate()
+let years=now.getFullYear()-dob.getFullYear()
+let months=now.getMonth()-dob.getMonth()
+let days=now.getDate()-dob.getDate()
 
-if(days < 0){
-months--
-}
+if(days<0){months--}
+if(months<0){years--;months+=12}
 
-if(months < 0){
-years--
-months += 12
-}
+let diff=now-dob
 
-/* TIME */
+let seconds=Math.floor(diff/1000)
+let minutes=Math.floor(diff/60000)
+let hours=Math.floor(diff/3600000)
+let totalDays=Math.floor(diff/86400000)
 
-let diff = now - dob
+/* LINE 1 */
 
-let seconds = Math.floor(diff/1000)
-let minutes = Math.floor(diff/60000)
-let hours = Math.floor(diff/3600000)
-let totalDays = Math.floor(diff/86400000)
+animateValue(prev.years,years,500,val=>{
+prev.years=val
+document.getElementById("line1").innerHTML=
+val+" Years • "+prev.months+" Months • "+prev.days+" Days"
+})
 
-document.getElementById("line1").innerHTML =
-years+" Years • "+months+" Months • "+totalDays+" Days"
+animateValue(prev.months,months,500,val=>{
+prev.months=val
+document.getElementById("line1").innerHTML=
+prev.years+" Years • "+val+" Months • "+prev.days+" Days"
+})
 
-document.getElementById("line2").innerHTML =
-hours.toLocaleString()+" Hours • "+
-minutes.toLocaleString()+" Minutes • "+
-seconds.toLocaleString()+" Seconds"
+animateValue(prev.days,totalDays,500,val=>{
+prev.days=val
+document.getElementById("line1").innerHTML=
+prev.years+" Years • "+prev.months+" Months • "+val+" Days"
+})
+
+/* LINE 2 */
+
+animateValue(prev.hours,hours,500,val=>{
+prev.hours=val
+document.getElementById("line2").innerHTML=
+val.toLocaleString()+" Hours • "+
+prev.minutes.toLocaleString()+" Minutes • "+
+prev.seconds.toLocaleString()+" Seconds"
+})
+
+animateValue(prev.minutes,minutes,500,val=>{
+prev.minutes=val
+document.getElementById("line2").innerHTML=
+prev.hours.toLocaleString()+" Hours • "+
+val.toLocaleString()+" Minutes • "+
+prev.seconds.toLocaleString()+" Seconds"
+})
+
+animateValue(prev.seconds,seconds,500,val=>{
+prev.seconds=val
+document.getElementById("line2").innerHTML=
+prev.hours.toLocaleString()+" Hours • "+
+prev.minutes.toLocaleString()+" Minutes • "+
+val.toLocaleString()+" Seconds"
+})
 
 }
 
