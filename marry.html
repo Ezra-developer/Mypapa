@@ -2,7 +2,7 @@
 <html>
 <head>
 
-<title>Will You Marry Me Suji</title>
+<title>Will You Marry Me</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -33,20 +33,21 @@ radial-gradient(2px 2px at 20% 30%,white,transparent),
 radial-gradient(2px 2px at 40% 70%,white,transparent),
 radial-gradient(2px 2px at 60% 20%,white,transparent),
 radial-gradient(2px 2px at 80% 60%,white,transparent),
-radial-gradient(2px 2px at 30% 80%,white,transparent);
+radial-gradient(2px 2px at 30% 80%,white,transparent),
+radial-gradient(2px 2px at 70% 40%,white,transparent);
 opacity:0.7;
 }
 
-/* FLOATING IMAGES */
+/* FLOAT IMAGES */
 
 .floating-img{
 position:absolute;
-width:130px;
-height:160px;
+width:120px;
+height:150px;
 object-fit:cover;
 border-radius:15px;
-opacity:0.5;
-box-shadow:0 0 25px rgba(255,255,255,0.6);
+opacity:0.6;
+box-shadow:0 0 20px rgba(255,255,255,0.6);
 animation:float 8s infinite ease-in-out;
 }
 
@@ -56,9 +57,9 @@ animation:float 8s infinite ease-in-out;
 100%{transform:translateY(0)}
 }
 
-.img1{top:8%; left:8%;}
+.img1{top:10%; left:8%;}
 .img2{bottom:10%; left:12%;}
-.img3{top:8%; right:8%;}
+.img3{top:10%; right:8%;}
 .img4{bottom:10%; right:12%;}
 
 /* MAIN */
@@ -66,15 +67,16 @@ animation:float 8s infinite ease-in-out;
 .container{
 position:relative;
 z-index:10;
-max-width:700px;
+max-width:800px;
+padding:20px;
 }
 
 /* TITLE */
 
 h1{
 font-size:60px;
-text-shadow:0 0 40px white;
-margin-bottom:10px;
+text-shadow:0 0 30px white;
+margin-bottom:20px;
 animation:glow 2s infinite alternate;
 }
 
@@ -83,10 +85,20 @@ from{ text-shadow:0 0 20px white;}
 to{ text-shadow:0 0 60px #fff;}
 }
 
-p{
-font-size:22px;
+/* MESSAGE */
+
+.message{
+font-size:20px;
+line-height:2;
+max-width:600px;
+margin:auto;
 margin-bottom:40px;
-line-height:1.6;
+animation:fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(30px);}
+to{opacity:1; transform:translateY(0);}
 }
 
 /* BUTTONS */
@@ -99,43 +111,34 @@ font-size:20px;
 cursor:pointer;
 margin:10px;
 box-shadow:0 0 25px rgba(255,255,255,0.8);
-transition:0.2s;
+transition:0.3s;
 }
 
-/* YES BUTTON */
+button:hover{
+transform:scale(1.1);
+}
+
+/* YES */
 
 .yes{
 background:white;
 color:#333;
-animation:pulse 1.2s infinite;
 }
 
-@keyframes pulse{
-0%{transform:scale(1)}
-50%{transform:scale(1.1)}
-100%{transform:scale(1)}
-}
-
-/* NO BUTTON */
+/* NO */
 
 .no{
 background:#ff4d6d;
 color:white;
-position:fixed;
+position:absolute;
 }
 
-/* HEART FALL */
+/* MOBILE */
 
-.heart{
-position:fixed;
-top:-10px;
-font-size:20px;
-animation:fall 6s linear infinite;
-}
-
-@keyframes fall{
-0%{transform:translateY(-10px); opacity:1;}
-100%{transform:translateY(110vh); opacity:0;}
+@media(max-width:600px){
+h1{font-size:40px;}
+.message{font-size:16px;}
+.floating-img{width:80px;height:100px;}
 }
 
 </style>
@@ -144,7 +147,7 @@ animation:fall 6s linear infinite;
 
 <body>
 
-<!-- IMAGES -->
+<!-- FLOATING IMAGES -->
 
 <img src="pic1.jpg" class="floating-img img1">
 <img src="pic4.jpg" class="floating-img img2">
@@ -153,75 +156,73 @@ animation:fall 6s linear infinite;
 
 <div class="container">
 
-<h1>Will You Marry Me 💍</h1>
+<h1>Suji 💍</h1>
 
-<p>
-From the moment you came into my life,<br>
-everything became beautiful 💖<br><br>
-I don't want just today…<br>
-I want forever with you ❤️
-</p>
+<div class="message">
 
-<button class="yes" onclick="goNext()">Yes ❤️</button>
+Indha love oru feeling illa…  
+idhu God kudutha blessing 💖  
 
-<button class="no" id="noBtn">No 😅</button>
+Un kooda dhaan en future imagine panren 🥺  
+
+Un happiness dhaan en priority 😊  
+Un kooda dhaan en whole life spend panna aasai 💕  
+
+Namma rendu perum  
+Jesus kaga serve panna porom nu naan namburen 🙏✝️  
+
+Un kooda serndhu  
+love oda, faith oda  
+Jesus ku serve panna aasai ❤️  
+
+So…  
+
+<b>Will you marry me? 💍❤️</b>
 
 </div>
 
+<button class="yes" onclick="goNext()">
+Yes 💖
+</button>
+
+<button class="no" id="noBtn" onmouseover="moveNo()">
+No 😅
+</button>
+
+</div>
+
+<!-- AUDIO -->
+
+<audio id="bgMusic" loop>
+<source src="voice.mp3" type="audio/mpeg">
+</audio>
+
 <script>
 
-/* YES */
+/* MUSIC */
+
+document.addEventListener("click", function(){
+document.getElementById("bgMusic").play()
+}, { once:true })
+
+/* YES BUTTON */
 
 function goNext(){
 window.location.href="final.html"
 }
 
-/* ULTRA FAST NO BUTTON */
+/* NO BUTTON FAST ESCAPE 😈 */
 
-let btn = document.getElementById("noBtn")
+function moveNo(){
 
-document.addEventListener("mousemove", function(e){
+let btn=document.getElementById("noBtn")
 
-let rect = btn.getBoundingClientRect()
+let x=Math.random()*400-200
+let y=Math.random()*400-200
 
-let distance = Math.hypot(
-e.clientX - (rect.left + rect.width/2),
-e.clientY - (rect.top + rect.height/2)
-)
-
-if(distance < 120){
-
-let x = Math.random() * (window.innerWidth - 100)
-let y = Math.random() * (window.innerHeight - 100)
-
-btn.style.left = x + "px"
-btn.style.top = y + "px"
+btn.style.transform="translate("+x+"px,"+y+"px)"
 
 }
-
-})
-
-/* HEART RAIN */
-
-function createHeart(){
-
-let heart=document.createElement("div")
-
-heart.className="heart"
-heart.innerHTML="💖"
-
-heart.style.left=Math.random()*100+"vw"
-heart.style.animationDuration=(4+Math.random()*2)+"s"
-
-document.body.appendChild(heart)
-
-setTimeout(()=>{
-heart.remove()
-},6000)
-
-}
-
-setInterval(createHeart,400)
 
 </script>
 
