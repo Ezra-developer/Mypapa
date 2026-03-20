@@ -11,78 +11,62 @@
 body{
 margin:0;
 min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
 text-align:center;
 font-family:'Segoe UI',sans-serif;
 color:white;
 background:linear-gradient(160deg,#ff6a9f,#ffb3c6,#3a0ca3);
 overflow:hidden;
-padding-top:80px;
 }
 
-/* STARS */
+/* CONTAINER */
 
-body:before{
-content:"";
-position:absolute;
-width:100%;
-height:100%;
-background:
-radial-gradient(2px 2px at 20% 30%,white,transparent),
-radial-gradient(2px 2px at 40% 70%,white,transparent),
-radial-gradient(2px 2px at 60% 20%,white,transparent),
-radial-gradient(2px 2px at 80% 60%,white,transparent),
-radial-gradient(2px 2px at 30% 80%,white,transparent);
-opacity:0.6;
+.container{
+max-width:700px;
+padding:20px;
+z-index:10;
 }
 
 /* TITLE */
 
 h1{
-font-size:60px;
-text-shadow:0 0 40px white;
-animation:fadeIn 2s ease;
+font-size:55px;
+margin-bottom:20px;
+text-shadow:0 0 30px white;
 }
 
 /* MESSAGE */
 
 .message{
-font-size:20px;
-max-width:700px;
-margin:auto;
-margin-top:20px;
-line-height:1.8;
-animation:fadeIn 3s ease;
+font-size:18px;
+line-height:1.7;
+margin-bottom:30px;
 }
 
 /* IMAGE */
 
 .main-img{
-margin-top:40px;
-width:300px;
-height:350px;
+width:260px;
+height:320px;
 object-fit:cover;
 border-radius:20px;
 box-shadow:0 0 25px rgba(255,255,255,0.8);
-animation:zoomIn 3s ease;
+margin-bottom:30px;
 }
 
 /* BUTTON */
 
 .btn{
-margin-top:40px;
-padding:15px 40px;
+padding:14px 35px;
 border:none;
-border-radius:40px;
+border-radius:30px;
 background:white;
 color:#333;
-font-size:18px;
+font-size:16px;
 cursor:pointer;
-box-shadow:0 0 25px white;
-transition:0.3s;
-}
-
-.btn:hover{
-transform:scale(1.1);
+box-shadow:0 0 20px white;
 }
 
 /* POPUP */
@@ -92,18 +76,18 @@ position:fixed;
 top:50%;
 left:50%;
 transform:translate(-50%,-50%);
-background:rgba(255,255,255,0.95);
+background:white;
 color:#333;
-padding:25px;
-border-radius:20px;
-box-shadow:0 0 40px rgba(0,0,0,0.3);
+padding:20px;
+border-radius:15px;
+box-shadow:0 0 30px rgba(0,0,0,0.4);
 display:none;
-z-index:100;
-text-align:center;
+z-index:999;
+width:280px;
 }
 
 .close{
-margin-top:15px;
+margin-top:10px;
 padding:8px 20px;
 border:none;
 border-radius:20px;
@@ -112,23 +96,13 @@ color:white;
 cursor:pointer;
 }
 
-/* ANIMATIONS */
-
-@keyframes fadeIn{
-from{opacity:0; transform:translateY(20px);}
-to{opacity:1; transform:translateY(0);}
-}
-
-@keyframes zoomIn{
-from{transform:scale(0.7); opacity:0;}
-to{transform:scale(1); opacity:1;}
-}
-
 </style>
 
 </head>
 
 <body>
+
+<div class="container">
 
 <h1>Forever With You ❤️</h1>
 
@@ -137,30 +111,26 @@ to{transform:scale(1); opacity:1;}
 From this day… 💖 <br><br>
 
 Un life la naan irukanum,  
-En life la nee irukanum… 😌  
+En life la nee irukanum… 😌 <br><br>
 
 Love oda, faith oda,  
-Jesus oda namma life build pannuvom 🙏✝️  
+Jesus oda namma life build pannuvom 🙏✝️ <br><br>
 
 Un kooda sirippu,  
 Un kooda kastam,  
-Ellam share pannitu… ❤️  
-
-Naan un kooda than irupen… always 💫  
+Ellam share pannitu… ❤️ <br><br>
 
 <b>Forever… only you 💍❤️</b>
 
 </div>
 
-<!-- SINGLE IMAGE -->
-
 <img src="pic3.jpg" class="main-img">
 
 <br>
 
-<button class="btn" onclick="openPopup()">
-Play My Voice 💌
-</button>
+<button class="btn" onclick="playVoice()">Play My Voice 💌</button>
+
+</div>
 
 <!-- POPUP -->
 
@@ -168,7 +138,7 @@ Play My Voice 💌
 
 <h3>For You ❤️</h3>
 
-<audio controls autoplay>
+<audio id="voicePlayer" controls>
 <source src="voice.mp3" type="audio/mpeg">
 </audio>
 
@@ -178,29 +148,29 @@ Play My Voice 💌
 
 </div>
 
-<!-- BACKGROUND MUSIC -->
-
-<audio id="bgMusic" loop>
-<source src="voice.mp3" type="audio/mpeg">
-</audio>
-
 <script>
 
-/* POPUP */
+/* PLAY VOICE FIX */
 
-function openPopup(){
-document.getElementById("popup").style.display="block"
+function playVoice(){
+let popup = document.getElementById("popup")
+let audio = document.getElementById("voicePlayer")
+
+popup.style.display = "block"
+
+audio.currentTime = 0
+audio.play()
 }
+
+/* CLOSE */
 
 function closePopup(){
-document.getElementById("popup").style.display="none"
+let popup = document.getElementById("popup")
+let audio = document.getElementById("voicePlayer")
+
+popup.style.display = "none"
+audio.pause()
 }
-
-/* BACKGROUND MUSIC */
-
-document.addEventListener("click", function(){
-document.getElementById("bgMusic").play()
-}, { once:true })
 
 </script>
 
