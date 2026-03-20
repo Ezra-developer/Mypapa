@@ -111,11 +111,6 @@ font-size:20px;
 cursor:pointer;
 margin:10px;
 box-shadow:0 0 25px rgba(255,255,255,0.8);
-transition:0.3s;
-}
-
-button:hover{
-transform:scale(1.1);
 }
 
 /* YES */
@@ -130,7 +125,8 @@ color:#333;
 .no{
 background:#ff4d6d;
 color:white;
-position:absolute;
+position:fixed;
+transition:0.05s;
 }
 
 /* MOBILE */
@@ -156,26 +152,26 @@ h1{font-size:40px;}
 
 <div class="container">
 
-<h1>Suji 💍</h1>
+<h1>Papa💍</h1>
 
 <div class="message">
 
-Indha love oru feeling illa…  
-idhu God kudutha blessing 💖  
+Indha love oru feeling illa…  <br>
+idhu God kudutha blessing 💖 <br><br>
 
-Un kooda dhaan en future imagine panren 🥺  
+Un kooda dhaan en future imagine panren 🥺  <br><br>
 
-Un happiness dhaan en priority 😊  
-Un kooda dhaan en whole life spend panna aasai 💕  
+Un happiness dhaan en priority 😊  <br>
+Un kooda dhaan en whole life spend panna aasai 💕  <br><br>
 
-Namma rendu perum  
-Jesus kaga serve panna porom nu naan namburen 🙏✝️  
+Namma rendu perum  <br>
+Jesus kaga serve panna porom nu naan namburen 🙏✝️  <br><br>
 
-Un kooda serndhu  
-love oda, faith oda  
-Jesus ku serve panna aasai ❤️  
+Un kooda serndhu  <br>
+love oda, faith oda  <br>
+Jesus ku serve panna aasai ❤️  <br><br>
 
-So…  
+So…  <br><br>
 
 <b>Will you marry me? 💍❤️</b>
 
@@ -185,7 +181,9 @@ So…
 Yes 💖
 </button>
 
-<button class="no" id="noBtn" onmouseover="moveNo()">
+<button class="no" id="noBtn"
+onmouseover="moveNo()"
+onclick="moveNo()">
 No 😅
 </button>
 
@@ -205,22 +203,23 @@ document.addEventListener("click", function(){
 document.getElementById("bgMusic").play()
 }, { once:true })
 
-/* YES BUTTON */
+/* YES */
 
 function goNext(){
 window.location.href="final.html"
 }
 
-/* NO BUTTON FAST ESCAPE 😈 */
+/* ULTRA FAST NO BUTTON 😈 */
 
 function moveNo(){
 
-let btn=document.getElementById("noBtn")
+let btn = document.getElementById("noBtn")
 
-let x=Math.random()*400-200
-let y=Math.random()*400-200
+let x = Math.random() * (window.innerWidth - 100)
+let y = Math.random() * (window.innerHeight - 50)
 
-btn.style.transform="translate("+x+"px,"+y+"px)"
+btn.style.left = x + "px"
+btn.style.top = y + "px"
 
 }
 
