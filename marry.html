@@ -33,8 +33,7 @@ radial-gradient(2px 2px at 20% 30%,white,transparent),
 radial-gradient(2px 2px at 40% 70%,white,transparent),
 radial-gradient(2px 2px at 60% 20%,white,transparent),
 radial-gradient(2px 2px at 80% 60%,white,transparent),
-radial-gradient(2px 2px at 30% 80%,white,transparent),
-radial-gradient(2px 2px at 70% 40%,white,transparent);
+radial-gradient(2px 2px at 30% 80%,white,transparent);
 opacity:0.7;
 }
 
@@ -69,9 +68,6 @@ position:relative;
 z-index:10;
 max-width:600px;
 padding:20px;
-display:flex;
-flex-direction:column;
-align-items:center;
 }
 
 /* TITLE */
@@ -90,20 +86,17 @@ line-height:1.8;
 max-width:500px;
 margin:auto;
 margin-bottom:30px;
-text-align:center;
 }
 
-/* BUTTON WRAPPER */
+/* BUTTON GROUP */
 
 .btn-group{
 display:flex;
 justify-content:center;
-align-items:center;
 gap:20px;
-margin-top:20px;
 }
 
-/* BUTTONS */
+/* BUTTON */
 
 button{
 padding:16px 40px;
@@ -127,15 +120,20 @@ color:#333;
 background:#ff4d6d;
 color:white;
 position:fixed;
-transition:0.05s;
 }
 
-/* MOBILE */
+/* HEART ANIMATION */
 
-@media(max-width:600px){
-h1{font-size:38px;}
-.message{font-size:16px;}
-.floating-img{width:80px;height:100px;}
+.heart{
+position:fixed;
+top:-10px;
+font-size:20px;
+animation:fall 5s linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-10px); opacity:1;}
+100%{transform:translateY(110vh); opacity:0;}
 }
 
 </style>
@@ -157,20 +155,19 @@ h1{font-size:38px;}
 
 <div class="message">
 
-Un happiness dhaan en happiness papa 😊 <br> 
+Un happiness dhaan en happiness papa 😊  
+Idhu God kudutha blessing 💖  
 
-Idhu God kudutha blessing 💖  <br>
+Un kooda dhaan en whole life  
+spend panna aasai 💕  
 
-Un kooda dhaan en whole life  <br>
-spend panna aasai 💕  <br>
+Namma rendu perum  
+Jesus kaga serve panna porom nu  
+naan namburen 🙏✝️  
 
-Namma rendu perum  <br>
-Jesus kaga serve panna porom nu  <br>
-naan namburen 🙏✝️  <br>
-
-Un kooda serndhu  <br>
-love oda, faith oda  <br>
-Jesus ku serve panna aasai ❤️  <br>
+Un kooda serndhu  
+love oda, faith oda  
+Jesus ku serve panna aasai ❤️  
 
 So…  
 
@@ -180,15 +177,11 @@ So…
 
 <div class="btn-group">
 
-<button class="yes" onclick="goNext()">
-Yes 💖
-</button>
+<button class="yes" onclick="goNext()">Yes 💖</button>
 
 <button class="no" id="noBtn"
 onmouseover="moveNo()"
-onclick="moveNo()">
-No 😅
-</button>
+onclick="moveNo()">No 😅</button>
 
 </div>
 
@@ -227,6 +220,27 @@ btn.style.left = x + "px"
 btn.style.top = y + "px"
 
 }
+
+/* HEARTS */
+
+function createHeart(){
+
+let heart = document.createElement("div")
+
+heart.className = "heart"
+heart.innerHTML = "💖"
+
+heart.style.left = Math.random()*100 + "vw"
+
+document.body.appendChild(heart)
+
+setTimeout(()=>{
+heart.remove()
+},5000)
+
+}
+
+setInterval(createHeart,300)
 
 </script>
 
