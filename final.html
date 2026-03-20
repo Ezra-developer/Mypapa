@@ -76,13 +76,33 @@ line-height:1.4;
 margin-bottom:25px;
 }
 
-/* IMAGE */
+/* IMAGE GLOW */
 
 .main-img{
 width:250px;
 border-radius:20px;
-box-shadow:0 0 25px rgba(255,255,255,0.5);
 margin-bottom:25px;
+animation:glowImg 2.5s infinite ease-in-out;
+}
+
+@keyframes glowImg{
+
+0%{
+box-shadow:0 0 15px rgba(255,255,255,0.4);
+transform:scale(1);
+}
+
+50%{
+box-shadow:0 0 40px rgba(255,255,255,0.9),
+0 0 80px rgba(255,105,180,0.6);
+transform:scale(1.05);
+}
+
+100%{
+box-shadow:0 0 15px rgba(255,255,255,0.4);
+transform:scale(1);
+}
+
 }
 
 /* BUTTON */
@@ -96,6 +116,11 @@ color:#333;
 font-size:16px;
 cursor:pointer;
 box-shadow:0 0 20px rgba(255,255,255,0.8);
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.1);
 }
 
 /* MODAL */
